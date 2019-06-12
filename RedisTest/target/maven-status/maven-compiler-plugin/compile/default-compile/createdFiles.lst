@@ -1,0 +1,5 @@
+redis\Application.class
+redis\service\RedisServiceImpl.class
+redis\controller\IndexController.class
+redis\controller\CacheController.class
+redis\service\RedisService.class

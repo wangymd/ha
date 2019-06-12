@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>redis.test</groupId>
+  <artifactId>RedisTest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>RedisTest</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-boot-starter-parent-version>2.0.5.RELEASE</spring-boot-starter-parent-version>
+    <spring-boot-starter-web-version>2.0.5.RELEASE</spring-boot-starter-web-version>
+    <spring-boot-starter-thymeleaf-version>2.0.5.RELEASE</spring-boot-starter-thymeleaf-version>
+    <spring-boot-devtools-version>2.0.5.RELEASE</spring-boot-devtools-version>
+    <spring-boot-starter-data-redis-version>2.0.5.RELEASE</spring-boot-starter-data-redis-version>
+    <spring-boot-starter-test-version>2.0.5.RELEASE</spring-boot-starter-test-version>
+  </properties>
+  
+ 	<!-- Inherit defaults from Spring Boot -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.5.RELEASE</version>
+	</parent>
+
+  <dependencies>
+  	<!-- Add typical dependencies for a web application -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+		<version>${spring-boot-starter-web-version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		<version>${spring-boot-starter-thymeleaf-version}</version>
+	</dependency>
+	
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+  		<artifactId>spring-boot-devtools</artifactId>
+  		<version>${spring-boot-devtools-version}</version>
+  	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-redis</artifactId>
+		<version>${spring-boot-starter-data-redis-version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<version>${spring-boot-starter-test-version}</version>
+	</dependency>
+	
+	<!-- Producer API -->
+	<dependency>
+	    <groupId>org.apache.kafka</groupId>
+	    <artifactId>kafka-clients</artifactId>
+	    <version>2.2.0</version>
+	</dependency>
+	
+	<!-- Streams API -->
+	<dependency>
+	    <groupId>org.apache.kafka</groupId>
+	    <artifactId>kafka-streams</artifactId>
+	    <version>2.2.0</version>
+	</dependency>
+
+  </dependencies>
+  
+  <!-- Package as an executable jar -->
+	<build>
+	<finalName>backend</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>backend</title>
+	<script type="text/javascript">
+		#var msg="${hostName}";
+		#alert(msg);
+	</script>
+</head>
+<body>
+	<div>
+		<p>templates</p>
+		<p>This is backend instance!</p>
+		<p th:text="${hostName}"></p>
+		<p th:text="${session.hostName}"></p>
+		<img src="/images/desk01.jpg" width="600" height="400"/>
+		<img src="/images/desk02.jpg" width="600" height="400"/>
+	</div>
+</body>
+</html>
