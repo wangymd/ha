@@ -19,8 +19,6 @@ import ha.BaseTest;
  */
 public class KafkaStreamsTest extends BaseTest {
 
-	//Map<String, Object> props = new HashMap<>();
-	
 	Properties props = new Properties();
 
 	KafkaConsumer<String, String> consumer = null;

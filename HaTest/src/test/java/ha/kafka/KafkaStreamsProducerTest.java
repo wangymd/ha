@@ -19,7 +19,7 @@ import ha.BaseTest;
  * @author wangym
  *
  */
-public class KafkaProducerTest extends BaseTest {
+public class KafkaStreamsProducerTest extends BaseTest {
 
 	Properties props = new Properties();
 
@@ -31,45 +31,17 @@ public class KafkaProducerTest extends BaseTest {
 		props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 	}
 
-	// 发送信息
+	/**
+	 * 流测试-生产者
+	 * 自动提交
+	 */
 	@Test
-	public void test1() {
+	public void streamProducerTest() {
 		Producer<String, String> producer = new KafkaProducer<String, String>(props);
 		
 		long start = System.currentTimeMillis();
-		
 		for (int i = 0; i < 1000000; i++) {
-			producer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(i), Integer.toString(i)));
-		}
-		producer.close();
-		
-		long end = System.currentTimeMillis();
-		long time = end - start;
-		System.out.println("共计耗时：" + time + "ms");
-	}
-
-	@Test
-	public void test2() {
-		props.put("transactional.id", "my-transactional-id");
-		Producer<String, String> producer = new KafkaProducer<String, String>(props, new StringSerializer(), new StringSerializer());
-
-		producer.initTransactions();// 开启事务
-		
-		long start = System.currentTimeMillis();
-		
-		try {
-			producer.beginTransaction();
-			for (int i = 0; i < 1000000; i++) {
-				producer.send(new ProducerRecord<>("my-topic", Integer.toString(i), Integer.toString(i)));
-			}
-			producer.commitTransaction();// 提交事务
-		} catch (ProducerFencedException | OutOfOrderSequenceException | AuthorizationException e) {
-			// We can't recover from these exceptions, so our only option is to close the
-			// producer and exit.
-			producer.close();
-		} catch (KafkaException e) {
-			// For all other exceptions, just abort the transaction and try again.
-			producer.abortTransaction();
+			producer.send(new ProducerRecord<String, String>("my-stream-input-topic", Integer.toString(i), Integer.toString(i)));
 		}
 		producer.close();
 		

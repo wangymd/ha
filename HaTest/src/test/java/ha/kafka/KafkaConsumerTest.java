@@ -30,7 +30,6 @@ public class KafkaConsumerTest extends BaseTest {
 
 	@Before
 	public void initKafka() {
-		// props.put("bootstrap.servers", "192.168.229.13:9092");
 		props.put("bootstrap.servers", "192.168.229.13:9092,192.168.229.13:9093,192.168.229.13:9094");
 		props.setProperty("group.id", "test");
 		props.setProperty("enable.auto.commit", "true");
@@ -82,7 +81,7 @@ public class KafkaConsumerTest extends BaseTest {
 
 	/**
 	 * 
-	 * 发送信息 手动提交
+	 * 遍历分区 手动提交
 	 */
 	@Test
 	public void test3() {
@@ -101,22 +100,6 @@ public class KafkaConsumerTest extends BaseTest {
 			}
 		} finally {
 			consumer.close();
-		}
-	}
-	
-	/**
-	 * 流消费者测试
-	 * 自动提交
-	 */
-	@SuppressWarnings("resource")
-	@Test
-	public void streamConsumerTest() {
-		KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
-		consumer.subscribe(Arrays.asList("my-stream-output-topic"));
-		while (true) {
-			ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-			for (ConsumerRecord<String, String> record : records)
-				System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
 		}
 	}
 
