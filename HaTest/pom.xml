@@ -13,7 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring-boot-starter-parent-version>2.0.5.RELEASE</spring-boot-starter-parent-version>
-    <spring-boot-starter-web-version>2.0.5.RELEASE</spring-boot-starter-web-version>
+    <spring-boot-starter-web-version>2.5.12</spring-boot-starter-web-version>
     <spring-boot-starter-thymeleaf-version>2.0.5.RELEASE</spring-boot-starter-thymeleaf-version>
     <spring-boot-devtools-version>2.0.5.RELEASE</spring-boot-devtools-version>
     <spring-boot-starter-data-redis-version>2.0.5.RELEASE</spring-boot-starter-data-redis-version>
